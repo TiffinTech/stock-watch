@@ -38,12 +38,14 @@ difference = float(yesterday_closing_price) - float(day_before_yesterday_closing
 up_down = None
 if difference > 0:
     up_down = "🔺"
+elif difference == 0: #Sometimes it could happen zero in theory
+    up_down = "➖"
 else:
     up_down = "🔻"
 
 #Work out the percentage difference in price between closing price yesterday and closing price the day before yesterday.
 diff_percent = round((difference / float(yesterday_closing_price)) * 100)
-print(diff_percent)
+print(up_down, diff_percent)
 
 if abs(diff_percent) >= 0:
     news_params = {
